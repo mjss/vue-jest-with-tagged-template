@@ -28,6 +28,9 @@
       <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
       <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
     </ul>
+    <p>
+      {{ myTag`test` }}
+    </p>
   </div>
 </template>
 
@@ -36,6 +39,12 @@ export default {
   name: 'HelloWorld',
   props: {
     msg: String,
+  },
+  methods: {
+    myTag(strings, ...values) {
+      const compiledString = strings.reduce((acc, val, index) => acc + val + (values[index] || ''), '');
+      return compiledString;
+    },
   },
 };
 </script>
